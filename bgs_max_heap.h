@@ -4,9 +4,9 @@
 using namespace std;
 
 template <class T>
-class BGSHeap {
+class MaxHeap {
     public:
-    BGSHeap<T>() {}
+    MaxHeap<T>() {}
 
     size_t size() {
         return m_array.size();
@@ -19,7 +19,7 @@ class BGSHeap {
        sift_up();
     }
 
-    T extract_min() {
+    T extract_max() {
        T result = m_array[0];
        swap(0, m_array.size()-1);
        m_array.pop_back();
@@ -29,11 +29,14 @@ class BGSHeap {
 
     void dump(){
         size_t i, j=2, k=0;
-        size_t d = depth();
+        size_t d = depth() * 2;
+        for(int m = 0; m < d; m++)cout << " ";
         for(i = 0; i < size(); i++){
             cout << m_array[i] << " ";
             if(i == k){
+                d-=2;
                 cout << endl;
+                for(int m = 0; m < d; m++)cout << " ";
                 k += j;
                 j *= 2;
             }
@@ -67,7 +70,7 @@ class BGSHeap {
         size_t sz = size();
         size_t i = sz-1;
         T newval = m_array[i];
-        while(newval < m_array[parent(i)] && i > 0){
+        while(newval > m_array[parent(i)] && i > 0){
             swap(i, parent(i));
             i = parent(i);
         }
@@ -79,10 +82,10 @@ class BGSHeap {
         while(i < sz){
             if( left(i) < sz){
                 if( right(i) < sz){
-                    if( newval < m_array[left(i)] && newval < m_array[right(i)]){
+                    if( newval > m_array[left(i)] && newval > m_array[right(i)]){
                         return;
                     }
-                    if(m_array[left(i)] < m_array[right(i)]) {
+                    if(m_array[left(i)] > m_array[right(i)]) {
                         swap(i, left(i));
                         i = left(i);
                     } else {
@@ -90,7 +93,7 @@ class BGSHeap {
                         i = right(i);
                     }
                 } else {
-                    if( newval < m_array[left(i)]){
+                    if( newval > m_array[left(i)]){
                         return;
                     }
                     swap(i, left(i));
