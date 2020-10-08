@@ -1,6 +1,7 @@
 #include "bgs_max_heap.h"
 #include "bgs_min_heap.h"
 #include "bgs_trie.h"
+#include "bgs_mergesort.h"
 #include <iostream>
 
 using namespace std;
@@ -9,7 +10,7 @@ void test_minheap(){
     MinHeap<int> heap = MinHeap<int>();
     cout << "MinHeap:" << endl; 
     int i;
-    for(i = 1; i < 14; i ++){
+    for(i = 1; i < 14; i++){
         heap.insert(i*2);
     }
     heap.dump();
@@ -29,7 +30,7 @@ void test_maxheap(){
     int i;
     MaxHeap<int> mheap = MaxHeap<int>();
     cout << "MaxHeap:" << endl; 
-    for(i = 1; i < 14; i ++){
+    for(i = 1; i < 14; i++){
         mheap.insert(i*2);
     }
 
@@ -48,6 +49,7 @@ void test_maxheap(){
 void test_trie(){
     Trie dict_trie;
     int i;
+    cout << "Trie:" << endl; 
     string words[] = {
          "abacus", "above", "about", "abstinence", 
          "absolution", "absolutely", "abdominal",
@@ -66,11 +68,27 @@ void test_trie(){
         cout << results[i] << endl;
     }
 }
+void test_merge_sort(){
+    vector<int> unsorted;
+    cout << "MergeSort:" << endl; 
+    int tmp[] = {14, 1, 15, 23, 3, 2, 16, 11, 9};
+    for(int i = 0; i < 9; i++){
+        unsorted.push_back(tmp[i]);
+        cout << tmp[i] << " "; 
+    }
+    cout << endl;
+    merge_sort(unsorted);
+    for(int i = 0; i < 9; i++){
+        cout << unsorted[i] << " "; 
+    }
+    cout << endl;
 
+}
 
 int main(){
     test_minheap();
     test_maxheap();
     test_trie();
+    test_merge_sort();
 
 }
