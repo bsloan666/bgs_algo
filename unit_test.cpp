@@ -12,20 +12,17 @@ void test_minheap(){
     for(i = 1; i < 14; i ++){
         heap.insert(i*2);
     }
-
     heap.dump();
     cout << endl;
 
     int lowest = heap.extract_min();
 
     cout << "extracted lowest: " << lowest << endl;
-
     heap.dump();
 
     heap.insert(9);
 
     cout << endl << "inserted 9 " << endl;
-
     heap.dump();
 }
 void test_maxheap(){
@@ -40,22 +37,23 @@ void test_maxheap(){
     cout << endl;
 
     int highest = mheap.extract_max();
-
     cout << "extracted highest: " << highest << endl;
 
     mheap.dump();
-
     mheap.insert(19);
 
     cout << endl << "inserted 19 " << endl;
-
     mheap.dump();
 }
 void test_trie(){
     Trie dict_trie;
     int i;
-    string words[6] = {"abacus", "above", "about", "absolution", "absolutely", "abdominal"}; 
-    for(size_t i = 0; i < 6; i++){
+    string words[] = {
+         "abacus", "above", "about", "abstinence", 
+         "absolution", "absolutely", "abdominal",
+         "abelian", "able", "absorption", "absent"
+    }; 
+    for(size_t i = 0; i < 11; i++){
         dict_trie.insert(words[i], true);
     }
     vector<string> results;
