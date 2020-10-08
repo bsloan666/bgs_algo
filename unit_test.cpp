@@ -1,10 +1,11 @@
 #include "bgs_max_heap.h"
 #include "bgs_min_heap.h"
+#include "bgs_trie.h"
 #include <iostream>
 
 using namespace std;
 
-int main(){
+void test_minheap(){
     MinHeap<int> heap = MinHeap<int>();
     cout << "MinHeap:" << endl; 
     int i;
@@ -26,7 +27,9 @@ int main(){
     cout << endl << "inserted 9 " << endl;
 
     heap.dump();
-
+}
+void test_maxheap(){
+    int i;
     MaxHeap<int> mheap = MaxHeap<int>();
     cout << "MaxHeap:" << endl; 
     for(i = 1; i < 14; i ++){
@@ -47,4 +50,29 @@ int main(){
     cout << endl << "inserted 19 " << endl;
 
     mheap.dump();
+}
+void test_trie(){
+    Trie dict_trie;
+    int i;
+    string words[6] = {"abacus", "above", "about", "absolution", "absolutely", "abdominal"}; 
+    for(size_t i = 0; i < 6; i++){
+        dict_trie.insert(words[i], true);
+    }
+    vector<string> results;
+    vector<char> prefix;
+    prefix.push_back('a');
+    prefix.push_back('b');
+    prefix.push_back('s');
+    dict_trie.keys_with_prefix(prefix, results );
+    for(i=0; i < results.size(); i++){
+        cout << results[i] << endl;
+    }
+}
+
+
+int main(){
+    test_minheap();
+    test_maxheap();
+    test_trie();
+
 }

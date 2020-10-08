@@ -1,8 +1,9 @@
 
-EXES = bgs_heaptest
+EXES = unit_test
+CXXFLAGS = --std=c++11
 
 %: %.cpp
-	g++ $^ -o  $@
+	g++ $(CXXFLAGS) $^ -o  $@
 
 all: $(EXES)
 
