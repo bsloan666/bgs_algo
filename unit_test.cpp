@@ -2,6 +2,8 @@
 #include "bgs_min_heap.h"
 #include "bgs_trie.h"
 #include "bgs_mergesort.h"
+#include "bgs_quicksort.h"
+#include "bgs_exp_hashmap.h"
 #include <iostream>
 
 using namespace std;
@@ -85,10 +87,46 @@ void test_merge_sort(){
 
 }
 
+void test_quicksort(){
+    vector<int> unsorted;
+    cout << "QuickSort:" << endl; 
+    int tmp[] = {14, 1, 15, 23, 3, 2, 16, 11, 9};
+    for(int i = 0; i < 9; i++){
+        unsorted.push_back(tmp[i]);
+        cout << tmp[i] << " ";
+    }
+    cout << endl;
+    quicksort(unsorted, 0, unsorted.size()-1);
+    for(int i = 0; i < 9; i++){
+        cout << unsorted[i] << " "; 
+    }
+    cout << endl;
+
+}
+void test_hashmap() {
+    ExpandableHashMap<string, int> hmap = ExpandableHashMap<string, int>(0.5);
+    hmap.associate("twelve", 12);
+    hmap.associate("eleven", 11);
+    hmap.associate("eight", 8);
+    hmap.associate("nine", 9);
+    hmap.associate("twenty", 20);
+    hmap.associate("twentyone", 21);
+    hmap.associate("five", 5);
+    hmap.associate("four", 4);
+
+    cout << hmap.size() << endl;
+    int result = hmap.find("nine");
+
+    cout << result << " = nine" << endl;
+}
+
+
 int main(){
     test_minheap();
     test_maxheap();
     test_trie();
     test_merge_sort();
+    test_quicksort();
+    test_hashmap();
 
 }
