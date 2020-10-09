@@ -1,7 +1,6 @@
 #include <vector>
 #include <list>
 #include <sstream>
-#include <strstream>
 #include <functional>
 #include <math.h>
 
@@ -22,12 +21,9 @@ class ExpandableHashMap {
     private:
     unsigned int _hash(const KeyType &key) const
     {
-        char f[256];
-        char *buf = f;
-        strstream ss(buf, 256);
+        stringstream ss;
         ss << key;
-        string tmp(buf);
-        return hash<string>()(tmp) % m_occupied;
+        return hash<string>()(ss.str()) % m_buckets.size();
     }
     size_t m_occupied;
     size_t m_associations;
@@ -36,9 +32,9 @@ class ExpandableHashMap {
 };
 
 template<typename KeyType, typename ValueType>
-ExpandableHashMap<KeyType, ValueType>::ExpandableHashMap(double maximumLoadFactor): m_buckets(8), m_associations(0)
+ExpandableHashMap<KeyType, ValueType>::ExpandableHashMap(double maxload): m_buckets(8), m_associations(0)
 {
-    m_maxload = maximumLoadFactor;
+    m_maxload = maxload;
     for (int i = 0; i < m_buckets.size(); i++)
     {
         m_buckets[i] = nullptr;
@@ -120,7 +116,7 @@ template<typename KeyType, typename ValueType>
 void ExpandableHashMap<KeyType, ValueType>::associate(const KeyType& key, const ValueType& value)
 {
     double sz = m_buckets.size();
-    if (m_occupied/sz > m_maxload)
+    if ((double)m_occupied/sz > m_maxload)
     {
         expand();
     }
@@ -175,6 +171,5 @@ const ValueType* ExpandableHashMap<KeyType, ValueType>::find(const KeyType& key)
         }
         li++;
     }
-    
     return nullptr;
 }

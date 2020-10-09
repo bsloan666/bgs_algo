@@ -115,9 +115,9 @@ void test_hashmap() {
     hmap.associate("four", 4);
 
     cout << hmap.size() << endl;
-    int result = hmap.find("nine");
+    const int *result = hmap.find("nine");
 
-    cout << result << " = nine" << endl;
+    //cout << *(result) << " = nine" << endl;
 }
 
 
