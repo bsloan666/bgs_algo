@@ -78,16 +78,18 @@ void test_merge_sort(){
     vector<int> unsorted;
     cout << "MergeSort:" << endl; 
     int tmp[] = {14, 1, 15, 23, 3, 2, 16, 11, 9};
+    cout << "   "; 
     for(int i = 0; i < 9; i++){
         unsorted.push_back(tmp[i]);
-        cout << "    " << tmp[i] << " "; 
+        cout <<  tmp[i] << " "; 
     }
     cout << endl;
     merge_sort(unsorted);
+    cout << "   "; 
     for(int i = 0; i < 9; i++){
-        cout << "    " << unsorted[i] << " "; 
+        cout <<  unsorted[i] << " "; 
     }
-    cout << endl;
+    cout << endl << endl;
 
 }
 
@@ -95,16 +97,18 @@ void test_quicksort(){
     vector<int> unsorted;
     cout << "QuickSort:" << endl; 
     int tmp[] = {14, 1, 15, 23, 3, 2, 16, 11, 9};
+    cout << "   "; 
     for(int i = 0; i < 9; i++){
         unsorted.push_back(tmp[i]);
-        cout << "    " << tmp[i] << " ";
+        cout << tmp[i] << " ";
     }
     cout << endl;
     quicksort(unsorted, 0, unsorted.size()-1);
+    cout << "   "; 
     for(int i = 0; i < 9; i++){
-        cout << "   " << unsorted[i] << " "; 
+        cout << unsorted[i] << " "; 
     }
-    cout << endl;
+    cout << endl << endl;
 
 }
 void test_hashmap() {
