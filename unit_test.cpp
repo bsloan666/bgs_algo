@@ -4,6 +4,7 @@
 #include "bgs_mergesort.h"
 #include "bgs_quicksort.h"
 #include "bgs_exp_hashmap.h"
+#include "bgs_sqrt.h"
 #include <iostream>
 
 using namespace std;
@@ -104,6 +105,7 @@ void test_quicksort(){
 
 }
 void test_hashmap() {
+    cout << "Expandable HashMap:" << endl; 
     ExpandableHashMap<string, int> hmap = ExpandableHashMap<string, int>(0.5);
     hmap.associate("twelve", 12);
     hmap.associate("eleven", 11);
@@ -113,13 +115,42 @@ void test_hashmap() {
     hmap.associate("twentyone", 21);
     hmap.associate("five", 5);
     hmap.associate("four", 4);
+    hmap.associate("thirty", 30);
+    hmap.associate("thirtyfour", 34);
+    hmap.associate("six", 6);
 
     cout << hmap.size() << endl;
     const int *result = hmap.find("nine");
 
-    //cout << *(result) << " = nine" << endl;
+    cout << *(result) << " = nine" << endl;
 }
+void test_sqrt() {
+    cout << "Square Root:" << endl; 
+    double a(9.0), b(12), c(450), d(2938.576);
 
+    double aa = bgs_sqrt(a);
+    double bb = bgs_sqrt(b);
+    double cc = bgs_sqrt(c);
+    double dd = bgs_sqrt(d);
+    cout << endl;
+
+    cout << "bgs_sqrt_1(" << a << ")= " << aa << "  sqrt(" << a << ")= " << sqrt(a) <<endl;
+    cout << "bgs_sqrt_1(" << b << ")= " << bb << "  sqrt(" << b << ")= " << sqrt(b) <<endl;
+    cout << "bgs_sqrt_1(" << c << ")= " << cc << "  sqrt(" << c << ")= " << sqrt(c) <<endl;
+    cout << "bgs_sqrt_1(" << d << ")= " << dd << "  sqrt(" << d << ")= " << sqrt(d) <<endl;
+    cout << endl;
+
+    aa = bgs_sqrt_2(a);
+    bb = bgs_sqrt_2(b);
+    cc = bgs_sqrt_2(c);
+    dd = bgs_sqrt_2(d);
+    cout << endl;
+
+    cout << "bgs_sqrt_2(" << a << ")= " << aa << "  sqrt(" << a << ")= " << sqrt(a) <<endl;
+    cout << "bgs_sqrt_2(" << b << ")= " << bb << "  sqrt(" << b << ")= " << sqrt(b) <<endl;
+    cout << "bgs_sqrt_2(" << c << ")= " << cc << "  sqrt(" << c << ")= " << sqrt(c) <<endl;
+    cout << "bgs_sqrt_2(" << d << ")= " << dd << "  sqrt(" << d << ")= " << sqrt(d) <<endl;
+}
 
 int main(){
     test_minheap();
@@ -128,5 +159,6 @@ int main(){
     test_merge_sort();
     test_quicksort();
     test_hashmap();
+    test_sqrt();
 
 }
