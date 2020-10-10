@@ -12,7 +12,7 @@ C++ implementations of some datatypes that are frequently mentioned in tech inte
 * bgs_mergesort:   templated top-down mergesort (thanks Wikipedia) 
 * bgs_quicksort:   templated quicksort (ditto)
 * bgs_exp_hashmap: Expandable hash map templated on key and value types (thanks UCLA)
-* bgs_sqrt:        Two square root functions. 
+* bgs_sqrt:        efficient (?) square root function. 
 
 
 

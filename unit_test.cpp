@@ -21,13 +21,14 @@ void test_minheap(){
 
     int lowest = heap.extract_min();
 
-    cout << "extracted lowest: " << lowest << endl;
+    cout << "    extracted lowest: " << lowest << endl;
     heap.dump();
 
     heap.insert(9);
 
-    cout << endl << "inserted 9 " << endl;
+    cout << endl << "    inserted 9 " << endl;
     heap.dump();
+    cout << endl;
 }
 void test_maxheap(){
     int i;
@@ -41,13 +42,14 @@ void test_maxheap(){
     cout << endl;
 
     int highest = mheap.extract_max();
-    cout << "extracted highest: " << highest << endl;
+    cout << "    extracted highest: " << highest << endl;
 
     mheap.dump();
     mheap.insert(19);
 
-    cout << endl << "inserted 19 " << endl;
+    cout << endl << "    inserted 19 " << endl;
     mheap.dump();
+    cout << endl;
 }
 void test_trie(){
     Trie dict_trie;
@@ -68,8 +70,9 @@ void test_trie(){
     prefix.push_back('s');
     dict_trie.keys_with_prefix(prefix, results );
     for(i=0; i < results.size(); i++){
-        cout << results[i] << endl;
+        cout << "    " << results[i] << endl;
     }
+    cout << endl;
 }
 void test_merge_sort(){
     vector<int> unsorted;
@@ -77,12 +80,12 @@ void test_merge_sort(){
     int tmp[] = {14, 1, 15, 23, 3, 2, 16, 11, 9};
     for(int i = 0; i < 9; i++){
         unsorted.push_back(tmp[i]);
-        cout << tmp[i] << " "; 
+        cout << "    " << tmp[i] << " "; 
     }
     cout << endl;
     merge_sort(unsorted);
     for(int i = 0; i < 9; i++){
-        cout << unsorted[i] << " "; 
+        cout << "    " << unsorted[i] << " "; 
     }
     cout << endl;
 
@@ -94,12 +97,12 @@ void test_quicksort(){
     int tmp[] = {14, 1, 15, 23, 3, 2, 16, 11, 9};
     for(int i = 0; i < 9; i++){
         unsorted.push_back(tmp[i]);
-        cout << tmp[i] << " ";
+        cout << "    " << tmp[i] << " ";
     }
     cout << endl;
     quicksort(unsorted, 0, unsorted.size()-1);
     for(int i = 0; i < 9; i++){
-        cout << unsorted[i] << " "; 
+        cout << "   " << unsorted[i] << " "; 
     }
     cout << endl;
 
@@ -119,41 +122,33 @@ void test_hashmap() {
     hmap.associate("thirtyfour", 34);
     hmap.associate("six", 6);
 
-    cout << hmap.size() << endl;
+    cout << "    " <<hmap.size() << endl;
     const int *result = hmap.find("nine");
 
-    cout << *(result) << " = nine" << endl;
+    cout << "    "  << *(result) << " = nine" << endl;
+    cout << endl;
 }
 void test_sqrt() {
     cout << "Square Root:" << endl; 
-    double a(9.0), b(12), c(450), d(2938.576);
+    double a(9.0), b(12), c(450), d(2938.576), e(97867453.345);
 
     double aa = bgs_sqrt(a);
     double bb = bgs_sqrt(b);
     double cc = bgs_sqrt(c);
     double dd = bgs_sqrt(d);
+    double ee = bgs_sqrt(e);
     cout << endl;
 
-    cout << "bgs_sqrt_1(" << a << ")= " << aa << "  sqrt(" << a << ")= " << sqrt(a) <<endl;
-    cout << "bgs_sqrt_1(" << b << ")= " << bb << "  sqrt(" << b << ")= " << sqrt(b) <<endl;
-    cout << "bgs_sqrt_1(" << c << ")= " << cc << "  sqrt(" << c << ")= " << sqrt(c) <<endl;
-    cout << "bgs_sqrt_1(" << d << ")= " << dd << "  sqrt(" << d << ")= " << sqrt(d) <<endl;
+    cout << "    bgs_sqrt(" << a << ")= " << aa << "  sqrt(" << a << ")= " << sqrt(a) <<endl;
+    cout << "    bgs_sqrt(" << b << ")= " << bb << "  sqrt(" << b << ")= " << sqrt(b) <<endl;
+    cout << "    bgs_sqrt(" << c << ")= " << cc << "  sqrt(" << c << ")= " << sqrt(c) <<endl;
+    cout << "    bgs_sqrt(" << d << ")= " << dd << "  sqrt(" << d << ")= " << sqrt(d) <<endl;
+    cout << "    bgs_sqrt(" << e << ")= " << ee << "  sqrt(" << e << ")= " << sqrt(e) <<endl;
     cout << endl;
-
-    aa = bgs_sqrt_2(a);
-    bb = bgs_sqrt_2(b);
-    cc = bgs_sqrt_2(c);
-    dd = bgs_sqrt_2(d);
-    cout << endl;
-
-    cout << "bgs_sqrt_2(" << a << ")= " << aa << "  sqrt(" << a << ")= " << sqrt(a) <<endl;
-    cout << "bgs_sqrt_2(" << b << ")= " << bb << "  sqrt(" << b << ")= " << sqrt(b) <<endl;
-    cout << "bgs_sqrt_2(" << c << ")= " << cc << "  sqrt(" << c << ")= " << sqrt(c) <<endl;
-    cout << "bgs_sqrt_2(" << d << ")= " << dd << "  sqrt(" << d << ")= " << sqrt(d) <<endl;
 }
 
 int main(){
-    test_minheap();
+    test_minheap(); 
     test_maxheap();
     test_trie();
     test_merge_sort();
